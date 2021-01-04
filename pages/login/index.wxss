@@ -1,0 +1,62 @@
+.login_image {
+  width: 710rpx;
+  height: 400rpx;
+  margin: 56rpx auto 124rpx auto;
+}
+.login_image image {
+  width: 100%;
+  height: 100%;
+}
+.login_Active {
+  display: flex;
+  flex-direction: column;
+  margin-left: 40rpx;
+}
+.login_Active .wechat_name text:nth-of-type(1) {
+  font-size: 36rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #222222;
+  margin-right: 12rpx;
+}
+.login_Active .wechat_name text:nth-of-type(2) {
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #222222;
+}
+.login_Active .wechat_inst {
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #222222;
+  font-size: 28rpx;
+}
+.login_btn {
+  margin-top: 60rpx;
+  width: 710rpx;
+  height: 88rpx;
+  background: linear-gradient(135deg, #f5bf47 0%, #f0aa3b 100%);
+  border-radius: 8rpx;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #ffffff;
+}
+.login_btn ::after {
+  border: 0;
+}
+.noLogin {
+  width: 710rpx;
+  height: 88rpx;
+  background: #cccccc;
+  opacity: 1;
+  border-radius: 8rpx;
+  margin: 30rpx auto 0 auto;
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  line-height: 88rpx;
+  color: #ffffff;
+  text-align: center;
+}

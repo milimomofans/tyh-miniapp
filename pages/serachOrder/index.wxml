@@ -1,0 +1,71 @@
+<!--pages/serachOrder/index.wxml-->
+<view class="prompt">
+    仅限当日订单查询
+</view>
+<view class="section">
+    <text class="nowTime">{{nowTime}}</text>
+    <picker mode="time" value="{{pageParams.startTime}}" start="00:01" end="23:59" bindchange="bindTimeChange" data-type="startTime">
+        <view class="picker">
+            <text>{{pageParams.startTime}}</text>
+        </view>
+    </picker>
+    <text class="section_text">至</text>
+    <picker mode="time" value="{{pageParams.endTime}}" start="01:00" end="24:00" bindchange="bindTimeChange" data-type="endTime">
+        <view class="picker">
+            <text>{{pageParams.endTime}}</text>
+        </view>
+    </picker>
+    <view class="serach" bindtap="serach">
+        查询
+    </view>
+    <view class="serach" bindtap="cancel">
+        取消
+    </view>
+</view>
+<view class="total" wx:if="{{pageParams.startTime && pageParams.endTime && isSerach}}">
+    该时间段有{{totalParam.tradeTotal}}笔订单，总金额{{totalParam.totalAmount}}元
+</view>
+<!--<view class="time_select">
+    <view>
+        {{time}}
+    </view>
+    <view>
+        
+    </view>
+</view> -->
+<view class="gas_orders" wx:for="{{gasOrder}}" wx:for-item="list"> 
+
+    <view wx:for="{{list}}" wx:key="{{index}}" class="gasOrder_item" bindtap="goDetail" data-item="{{item}}">
+        <view class="item_head">
+            <view>订单号：{{item.no}}</view>
+            <image src="../../image/user/gotoArrow.png" />
+        </view>
+        <view class="item_attr">
+            <view class="item_attr_left">交易时间</view>
+            <view class="item_attr_right">{{item.created}}</view>
+        </view>
+        <view class="item_attr">
+            <view class="item_attr_left">交易车牌</view>
+            <view class="item_attr_right">{{item.carLicence}}</view>
+        </view>
+        <view class="item_attr">
+            <view class="item_attr_left">交易用户</view>
+            <view class="item_attr_right">{{item.phone}}</view>
+        </view>
+        <view class="item_attr">
+            <view class="item_attr_left">油枪号</view>
+            <view class="item_attr_right">{{item.gunName}}号油枪</view>
+        </view>
+        <view class="item_attr">
+            <view class="item_attr_left">油号</view>
+            <view class="item_attr_right">{{item.oilName}}</view>
+        </view>
+        <view class="item_attr">
+            <view class="item_attr_left">加油金额</view>
+            <view class="item_attr_right"><text style="color:#FF3333">{{item.price}}元</text></view>
+        </view>
+    </view>
+</view>
+<!--<view wx:if="{{gasOrder.length == 0}}" class="noOrder_text">
+    暂无订单
+</view>-->

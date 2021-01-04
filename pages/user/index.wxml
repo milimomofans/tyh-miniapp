@@ -1,0 +1,63 @@
+<!--pages/user/index.wxml-->
+<view class="user_head" style="background:url('https://7479-tyh-vl8cc-1300334879.tcb.qcloud.la/background.png?sign=b590d4f888e56d86085e99a7f0cdf9a2&t=1569601015') no-repeat">
+    <view class="user_info" >
+        <view class="user_info_left">
+            <image src="{{noLogin ? '../../image/user/noLogin.png' : user.avater}}" bindtap="LoginBtn"/>
+        </view>
+        <view class="user_info_right" wx:if="{{!noLogin}}">
+            <view class="user_info_name">
+               {{user.nickName}} 
+            </view>
+            <view class="user_info_item" style="margin-top:10rpx">
+                <image class="item_image" src="/image/user/userPhone.png" />
+                <text wx:if="{{userInfo}}">{{userInfo.phone}}</text>
+                <text wx:if="{{!userInfo}}">暂未设置</text>
+            </view>
+            <view class="user_info_item">
+                <image class="item_image" src="/image/user/plateNumber.png" />
+                <text wx:if="{{userInfo}}">{{userInfo.carLicense}}</text>
+                <text wx:if="{{!userInfo}}">暂未设置</text>
+            </view>
+        </view>
+        <view class="editor" bindtap="goEditor" wx:if="{{!noLogin}}">
+            编辑
+        </view>
+        <view class="noLogin_prompt" wx:if="{{noLogin}}" bindtap="LoginBtn">
+            点击登录账户
+        </view>
+    </view>
+</view> 
+<view class="user_func">
+    <view class="user_func_item" style="border-bottom:1rpx solid rgba(245,245,245,1)" bindtap="goLinkHandler" data-type="historyOrder">
+        <view>历史订单</view>
+        <view><image src="/image/user/gotoArrow.png" /></view>
+    </view>
+    <view class="user_func_item" wx:if="{{haveGasOrder}}" bindtap="goLinkHandler" data-type="serachOrder">
+        <view>油站订单</view>
+        <image src="/image/user/gotoArrow.png" />
+    </view>
+    <view  class="user_func_item" bindtap="toQrcode">
+        <view>我的二维码</view>
+        <image src="/image/user/gotoArrow.png" />
+    </view>
+</view>
+
+<!--<popup show="{{noLogin}}">
+    <view class="loginPrompt">
+        <view class="login_title">您还未登录</view>
+        <view class="login_text">
+            请先登录再进行操作
+        </view>
+        <view class="login_btn">
+            <view class="noLogin">
+                暂不登录
+            </view>
+            <view class="line">
+                
+            </view>
+            <button class="login">
+                立即登录
+            </button>
+        </view>
+    </view>
+</popup>-->

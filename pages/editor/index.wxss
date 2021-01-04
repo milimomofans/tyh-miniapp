@@ -1,0 +1,50 @@
+.input_item {
+  height: 100rpx;
+  display: flex;
+  margin-left: 40rpx;
+  width: 710rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.input_item .input_text {
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #888888;
+  margin-right: 70rpx;
+}
+.input_item input {
+  width: 250rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  color: #222222;
+}
+.input_item .code_btn {
+  margin-left: auto;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #f0aa3b;
+  margin-right: 40rpx;
+  font-size: 28rpx;
+}
+.input_view {
+  background: white;
+}
+.Cant_submit {
+  width: 710rpx;
+  height: 88rpx;
+  background: #cccccc;
+  border-radius: 8rpx;
+  text-align: center;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 120rpx auto 0 auto;
+}
+.submit {
+  background: linear-gradient(135deg, #ff973d 0%, #ff3333 100%) !important;
+}

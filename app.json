@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/user/index",
+    "pages/order/index",
+    "pages/login/index",
+    "pages/editor/index",
+    "pages/orderDetail/index",
+    "pages/serachOrder/index",
+    "pages/qrcode/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "途油惠",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar":{
+    "positon":"bottom",
+    "borderStyle":"white",
+    "selectedColor":"#F5BF47",
+    "list":[
+      {
+        "pagePath":"pages/home/index",
+        "text":"加油",
+        "iconPath":"/image/tabbar/refuel.png",
+        "selectedIconPath":"/image/tabbar/refuel_cur.png"
+      },
+      {
+        "pagePath":"pages/user/index",
+        "text":"我的",
+        "iconPath":"/image/tabbar/user.png",
+        "selectedIconPath":"/image/tabbar/user_cur.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于寻找附近的加油站"
+    }
+  }
+
+  
+}

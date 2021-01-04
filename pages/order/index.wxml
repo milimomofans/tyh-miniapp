@@ -1,0 +1,29 @@
+<!--pages/order/index.wxml-->
+
+<view class="orderList" wx:for="{{orderList}}" wx:for-item="list" wx:key="{{index}}">
+    <view class="order_item" wx:for="{{list}}" wx:key="{{index}}" bindtap="goOrderDetail" data-item="{{item}}">
+        <view class="order_time">
+            {{item.createTimeStr}}
+        </view>
+        <view class="order_info">
+            <view class="order_gas_name">
+            <view>{{item.gasName}}</view>         
+            <image src="../../image/user/gotoArrow.png" />     
+            </view>
+            <view class="order_details">
+                <view class="order_oil">
+                    油号:{{item.oilName}}
+                </view>
+                <view class="order_detail_number">
+                    加油量：{{item.oilNum}}升
+                </view>
+                <view class="order_detail_price">
+                    金额:{{item.totalAmount}}元                        
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="no_order" wx:if="{{orderList.length == 0}}">
+    暂无油站订单
+</view>

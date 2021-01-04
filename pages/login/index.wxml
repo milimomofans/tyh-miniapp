@@ -1,0 +1,12 @@
+<!--pages/login/index.wxml-->
+<view class="login_image">
+    <image src="/image/login/login.png" />
+</view>
+<view class="login_Active">
+    <view class="wechat_name"><text>途油惠</text><text>申请获取权限</text></view>
+    <view class="wechat_inst">获得您的公开信息（昵称、头像等）</view>
+</view>
+<button class="login_btn" open-type="getUserInfo" bindgetuserinfo="wxLogin">微信授权</button>
+<view class="noLogin" bindtap="noLogin">
+    暂不登录
+</view>

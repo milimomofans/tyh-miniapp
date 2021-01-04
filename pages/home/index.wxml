@@ -1,0 +1,131 @@
+<!--pages/home/index.wxml-->
+<wxs module='homeFunc'>
+   var distance = function(num){
+       var newNum = num - 0
+       var returnStr = newNum
+       if(newNum > 1000){
+           returnStr = (newNum/1000).toFixed(2) + 'k'
+       }
+       return returnStr
+    } 
+    module.exports = {
+        dis:distance
+    }
+</wxs>
+<swiper autoplay  class="banner" >
+    <block wx:for="{{banner}}">
+        <swiper-item>
+            <image src="{{item.pic}}" class="slide-image" bindtap="toDetail" data-detail= "{{item}}" />
+        </swiper-item>
+    </block>
+</swiper>
+
+<view class="model_change" bindtap="OpenList">
+    <text wx:if="{{!curGasName}}" style="line-height:100rpx">加油站</text>
+    <view class="change_address" wx:else>
+        <view class="gasName">{{curGasName}}</view>
+        <view class="gasAddress">
+            <image src="../../image/home/location.png" />
+            <view>{{gasInfo.address}}</view>
+        </view>
+    </view>
+    <image class="arrow" src="{{showList ? '../../image/home/up.png' : '../../image/home/down.png'}} " /> 
+    <scroll-view wx:if="{{showList}}" scroll-y="true" style="height:500rpx;width:710rpx;margin:auto;position:absolute;top:105rpx;left:0;right:0;z-index:100;background:white" bindscrolltolower="scrollTolower">
+    <view wx:for="{{GasList}}" wx:key="{{index}}" wx:for-item="ListItem">
+        <view wx:for="{{ListItem}}" wx:key="{{index}}" class="GasItem" bindtap="getGasInfo" data-gasId = "{{item.id}}">
+            <view class="GasItem_name">
+                <view class="GasItem_name_left">
+                    {{item.name}}
+                </view>
+                <view class="GasItem_name_right">
+                    {{homeFunc.dis(item.distance)}}m
+                </view>
+            </view>
+            <view class="GasItem_location">
+                <image src="/image/home/location.png" />
+                {{item.address}}
+            </view>
+        </view>
+    </view>
+    </scroll-view>
+</view>
+
+<view class="Price">
+    <row>
+        <col span="8" custom-class="price_style">油号</col>
+        <col span="8"  custom-class="price_style">当前市价</col>
+        <col span="8" custom-class="price_style">本油站优惠价</col>
+    </row>
+</view>
+<view class="Price" wx:for="{{gasInfo.oils ? gasInfo.oils : falseData}}" wx:key="{{index}}">
+    <row>
+        <col span="8" custom-class="price_style">
+            <text wx:if="{{item.name}}">{{item.name}}#</text>
+            <text style="text-align:center" wx:else>-</text>
+        </col>
+        <col span="8" custom-class="price_style">
+            <view wx:if="{{item.marketPrice}}" class="markPirce">{{item.marketPrice}}元/升</view>
+            
+            <text style="text-align:center" wx:else>-</text>
+        </col>
+        <col span="8" custom-class="price_style">
+            <text wx:if="{{item.price}}">{{item.price}}元/升</text>
+            <text style="text-align:center" wx:else>-</text> 
+            <image wx:if="{{item.price}}" src="../../image/home/priceImg.png" />
+        </col>
+    </row>
+</view>
+<view class="line"></view>
+
+<view class="change_items">
+    <view class="change_item_left">
+        <image src="{{curGasName ? '../../image/home/L_fuel.png' : '../../image/home/fuel.png'}} " />
+        油号
+    </view>
+    <view class="change_item_right">
+        <view wx:for="{{gasInfo.oils ? gasInfo.oils : falseData}}" wx:key="{{index}}" class="change_item" >
+            <text class="{{curOilid == item.id ? 'curOil' : ''}}" wx:if="{{item.name}}" bindtap="changeOil" data-oilId ="{{item.id}}" data-curoil="{{item}}">{{item.name}}#</text>
+            <text wx:else>-</text>
+        </view>
+    </view>
+</view>
+
+<view class="change_items">
+    <view class="change_item_left">
+        <image src="{{curGasName ? '../../image/home/L_oilGun.png' : '../../image/home/oilGun.png'}}" />
+        油枪
+    </view>
+    <view class="change_item_right">
+        <view wx:for="{{curOil.oilGuns ? curOil.oilGuns : falseData}}" wx:key="{{index}}" class="change_item "  bindtap="changeOilGan" data-oilGanId ="{{item.id}}">
+           <text class="{{item.id == curOilGanId ? 'curOil' : ''}}" wx:if="{{item.name}}">{{item.name}}</text>
+           <text wx:else>-</text>
+        </view>
+    </view>
+</view>
+
+<view class="price">
+    <view class="price_left">
+        <image src="{{curGasName ? '../../image/home/L_money.png':'../../image/home/money.png'}}" />
+        <text>加油金额</text>
+    </view>
+    <view class="price_right">
+        <text>￥</text>
+        <input type="digit" placeholder="请加油完成后，输入油表金额" bindinput="inputPrice" value="{{Price}}" disabled="{{curOil && curOilGanId ? false : true}}"/>
+    </view>
+
+    </view>
+    <view class="discounts" >
+        <view>
+            优惠金额：{{total.profitAmount}}
+        </view> 
+        <image src="../../image/home/priceImg.png" />
+    </view>
+    <view class="pay_btn {{curOil && curOilGanId && Price ? 'canBuy' : ''}}"  bindtap="Pay">
+        支付<text wx:if="{{total}}">{{total.amount}}元</text>
+    </view>
+    <view class="prompt">
+        本优惠支付暂不提供加油发票，如需请联系途油惠。
+    </view>
+    <view class="block_view">
+        
+    </view>

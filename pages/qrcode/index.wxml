@@ -1,0 +1,29 @@
+<view class="avater">
+    <image src="{{userInfo.avater}}"/>
+    <view class="nickName">{{userInfo.nickName}}</view>
+</view>
+<view class="shareInfo">
+    <image src="{{shareParam.qrcode}}" />
+    <view class="share_name">途油惠小程序</view>
+    <view class="share_title">扫一扫登录注册</view>
+</view>
+<view class="buttons">
+    <button open-type="share">
+        <image src="../../image/user/shareIcon.png" />
+        微信好友
+    </button>
+    <button bindtap="savePic">
+        <image src="../../image/user/saveIcon.png" />
+        保存图片至相册
+    </button>
+</view>
+<van-dialog
+  wx:if="{{auth}}"
+  title="授权提示"
+  show="{{ auth }}"
+  message="保存图片需要授权"
+  show-cancel-button
+  confirm-button-open-type="openSetting"
+  bind:close="onClose"
+>
+</van-dialog>

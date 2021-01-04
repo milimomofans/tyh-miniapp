@@ -1,0 +1,48 @@
+<!--pages/orderDetail/index.wxml-->
+<view class="order_detail">
+    <view class="gas_name_time">
+        <view class="item_left">
+            {{params.gasName}}
+        </view>
+        <view class="item_right">
+            {{params.payTimeStr}}
+        </view>
+    </view>
+    <view class="order_info">
+        <view class="order_info_title">
+            <view class="order_info_item">
+                <view class="order_title_head">油号</view>
+                <view class="order_title_style">#{{params.oilName}}</view>
+            </view>
+            <view class="order_info_item">
+                <view class="order_title_head">油枪号</view>
+                <view class="order_title_style">{{params.gunName}}</view>
+            </view>
+            <view class="order_info_item">
+                <view class="order_title_head">加油量</view>
+                <view class="order_title_style">{{params.oilNum}}升</view>
+            </view>
+        </view>
+    </view>
+    <view class="order_last_price">
+        <text style="text-align:right;">加油金额：</text><text class="price">{{params.totalAmount}}元</text>     
+    </view>
+    <view class="order_price">
+        <view><text style="text-align:right;">支付金额：</text><text style="color:rgba(34,34,34,1);">{{params.amount}}元</text></view>
+        <view><text style="text-align:right;">优惠金额：</text><text style="color:rgba(255,51,51,1);">{{params.profitAmount}}元</text></view>
+    </view>
+     
+    
+    <!--<view class="order_canvas">
+        <canvas canvas-id="Code" class="Canvas"></canvas>
+    </view>-->
+</view>
+<view class="banner">
+    <swiper  autoplay="auto" interval="4000" duration="1000" style="width:710rpx;height:240rpx;margin:auto;">
+        <block wx:for="{{banner}}">
+            <swiper-item>
+                <image src="{{item.pic}}" class="slide-image" style="width:710rpx;height:240rpx;"/>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
